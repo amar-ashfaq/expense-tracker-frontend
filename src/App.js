@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import ExpenseList from "./components/ExpenseList.js";
 import ExpenseDetails from "./components/ExpenseDetails.js";
-import ExpenseForm from "./components/ExpenseForm.js";
+import CreateExpense from "./components/CreateExpense.js";
 import Home from "./components/Home.js";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/expenses" element={<ExpenseList />} />
           <Route path="/expenses/:id" element={<ExpenseDetails />} />
-          <Route path="/expenses/create-expense" element={<ExpenseForm />} />
+          <Route path="/expenses/create-expense" element={<CreateExpense />} />
         </Routes>
       </div>
     </BrowserRouter>

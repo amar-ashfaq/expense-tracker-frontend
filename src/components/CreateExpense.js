@@ -1,6 +1,6 @@
 import React from "react";
 
-function ExpenseForm() {
+function CreateExpense() {
   return (
     <div>
       <h1>Expense Form</h1>
@@ -9,4 +9,4 @@ function ExpenseForm() {
   );
 }
 
-export default ExpenseForm;
+export default CreateExpense;
