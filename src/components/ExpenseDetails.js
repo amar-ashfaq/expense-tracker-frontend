@@ -1,9 +1,30 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function ExpenseDetails() {
   const { id } = useParams();
   const [expenseItemState, setExpenseItemState] = useState(null);
+  const navigate = useNavigate();
+
+  const deleteExpense = () => {
+    // remove the expense
+    fetch(`https://localhost:7101/expenses/${id}`, {
+      method: "DELETE",
+      headers: new Headers({
+        "Content-Type": "application/json; charset=UTF-8",
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete");
+        }
+        console.log("Deleted expense");
+        navigate("/expenses");
+      })
+      .catch((error) => {
+        console.error("Error deleting expense:", error);
+      });
+  };
 
   useEffect(() => {
     // fetching data
@@ -31,6 +52,10 @@ function ExpenseDetails() {
       <p>Description - {expenseItemState.description}</p>
       <p>Type - {expenseItemState.type}</p>
       <p>Price - £{expenseItemState.price}</p>
+
+      <div>
+        <button onClick={deleteExpense}>Delete</button>
+      </div>
     </div>
   );
 }
